@@ -10,9 +10,8 @@ Proposed system
 The Vehicle Identification System will be helpful for various people and organization such as a police can identify the vehicle and the owner in no time which will reduce theft of vehicles, an insurance company can track the vehicle while the vehicle workshop will provide better services and a customer can get information of the vehicle in no time, so this Vehicle Identification System will be beneficial for most of them. While it will also help for those who want to buy a second-hand vehicle by contacting the owner through the system.
 
 Vehicle Identification System Modules
-Administrative module
 
-By this administrator of the Vehicle Identification System can give access to any person or organization by providing them with some user Id. This will have access to deny for providing the information to anyone.
+Administrative module: By this administrator of the Vehicle Identification System can give access to any person or organization by providing them with some user Id. This will have access to deny for providing the information to anyone.
 
 User module: Through this module anyone can access the details of any vehicle by entering the user Id into the system, while this module contains several other modules according to the use. These modules are
 
