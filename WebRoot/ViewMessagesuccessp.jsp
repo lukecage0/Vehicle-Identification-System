@@ -1,0 +1,68 @@
+
+
+<%@ page language="java"%>
+
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+<%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html:html locale="true">
+  <head>
+    <html:base />
+    
+    <title>Home.jsp</title>
+    
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">    
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+  
+</head>    
+  
+  
+ <BODY>
+ 
+		<TABLE BORDER="0" WIDTH="100%" HEIGHT="100%">
+			<TR>
+				<TD COLSPAN="2" BGCOLOR="wheat" NOWRAP>
+					<jsp:include page="vehicleheader.jsp"/>
+				</TD>
+			</TR>
+			<TR>
+				<TD WIDTH="25%" BGCOLOR="#CBB9F9" NOWRAP>
+					<jsp:include page="policemenu.jsp"/>
+				</TD>
+				
+				<TD WIDTH="82%" HEIGHT="81%" BGCOLOR="#cccfc" NOWRAP><!--#E4ECF6-->
+					<html:form action="/gotologinpage">
+					<html:errors/>
+  <pre>                              <font size="4"><strong><center>Messages</center></strong></font>
+  <table width="51%" border="0" cellspacing="1" cellpadding="1" align="center">
+  <tr>
+   <td> From </td><td>   <input type="text" value="<%=request.getParameter("from")%>" /></td></tr>
+  <tr><td>Subject</td><td> <input type="text" value="<%=request.getParameter("sub")%>" /></td>
+  </tr>
+  <tr>
+  <td>
+    Message</td><td><textarea col="40" rows="10" ><%=request.getParameter("msg")%></textarea></td>
+  </tr>
+    
+</table></pre>
+
+</html:form>
+					
+				</TD>
+			</TR>
+			<TR>
+				<TD COLSPAN="2" HEIGHT="5%" BGCOLOR="wheat" NOWRAP>
+					<jsp:include page="vehiclefooter.jsp"/>
+				</TD>
+			</TR>
+		</TABLE>
+	</BODY>
+</html:html>
+

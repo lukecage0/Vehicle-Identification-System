@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+   <data-sources>
+      <data-source key="org.apache.struts.action.DATA_SOURCE" type="oracle.jdbc.pool.OracleConnectionPoolDataSource">
+         <set-property property="password" value="vehicle" />
+         <set-property property="user" value="vehicle1" />
+         <set-property property="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+          <set-property property="URL" value="jdbc:oracle:thin:@server:1521:server"/>
+     
+      </data-source>
+
+   </data-sources>
+
+   
+   <form-beans>
+   <form-bean 
+   name="BranchBeanForm"
+   type="com.nit.vehicle.BranchBeanForm"/>
+      <form-bean name="LoginForm" 
+      type="com.nit.vehicle.LoginForm"/>
+      <form-bean name="WorkShopVehicleForm" type="com.nit.vehicle.WorkShopVehicleForm" />
+      <form-bean name="LoginPageForm" type="com.nit.vehicle.LoginPageForm" />
+      <form-bean name="PoliceForm" type="com.nit.vehicle.PoliceForm" />
+       <form-bean name="ViewVehicleForm" type="com.nit.vehicle.ViewVehicleForm" />
+      <form-bean name="NewInsuranceForm" type="com.nit.vehicle.NewInsuranceForm" />
+      <form-bean name="NewUserForm" type="com.nit.vehicle.NewUserForm" />
+      <form-bean name="InsuranceLoginForm" type="com.nit.vehicle.InsuranceLoginForm" />
+      <form-bean name="WorkshopLoginForm" type="com.nit.vehicle.WorkshopLoginForm" />
+      <form-bean name="WorkshopViewForm" type="com.nit.vehicle.WorkshopViewForm" />
+      <form-bean name="OtherUserRegistrationForm" type="com.nit.vehicle.OtherUserRegistrationForm" />
+      <form-bean name="AddVehicleDetailsForm" type="com.nit.vehicle.AddVehicleDetailsForm" />
+      <form-bean name="VehicleRegistrationForm" type="com.nit.vehicle.VehicleRegistrationForm" />
+      <form-bean name="VehicleTechnicalForm" type="com.nit.vehicle.VehicleTechnicalForm" />
+      <form-bean name="NewModelForm" type="com.nit.vehicle.NewModelForm" />
+      <form-bean name="NewAdminForm" type="com.nit.vehicle.NewAdminForm" />
+      <form-bean name="AcceptOrRejectForm" type="com.nit.vehicle.AcceptOrRejectForm" />
+      <form-bean name="MsgToNoticeBoardForm" type="com.nit.vehicle.MsgToNoticeBoardForm" />
+      <form-bean name="ViewNoticeBoardMsgForm" type="com.nit.vehicle.ViewNoticeBoardMsgForm" />
+      <form-bean name="PoliceSendMsgForm" type="com.nit.vehicle.PoliceSendMsgForm" />
+      <form-bean name="messagesForm" type="com.nit.vehicle.MessagesForm" />
+      <form-bean name="viewmessageForm" type="com.nit.vehicle.ViewmessageForm" />
+      <form-bean name="viewmodelForm" type="com.nit.vehicle.ViewmodelForm" />
+      <form-bean name="viewmodelsuccessForm" type="com.nit.vehicle.ViewmodelsuccessForm" />
+      <form-bean name="AddInsuranceForm" type="com.nit.vehicle.AddInsuranceForm" />
+      <form-bean name="AddServiceDetailsForm" type="com.nit.vehicle.AddServiceDetailsForm" />
+      
+   </form-beans>
+   <global-exceptions/>
+   <global-forwards/>
+   <action-mappings>
+      <action path="/gotoaction" 
+      type="com.nit.vehicle.AddBranchAction" 
+      name="BranchBeanForm" 
+      validate="true" 
+      input="/AddBranch.jsp">
+      <forward name="success" path="/homepage.jsp"/>
+      <forward name="fail" path="/AddBranch.jsp"/>
+      </action>
+      
+      <action  path="/gotologin"
+      type="com.nit.vehicle.LoginAction"  name="LoginForm"
+      validate="true"
+      input ="/loginhome.jsp">
+      <forward  name="success"  path="/MainFirstPage.jsp"/>
+      <forward  name="fail" path="/loginhome.jsp"/>
+      </action>
+      
+      <action path="/gotodelete"
+       type="com.nit.vehicle.DeleteBranchAction"  name="BranchBeanForm"
+      validate="false"
+      input ="/DeleteBranch.jsp">
+      <forward  name="success"  path="/deletehome.jsp"/>
+      <forward  name="fail" path="/delresponse.jsp"/>
+     </action>
+     
+     
+     
+      <action path="/gotoupdate"
+      type="com.nit.vehicle.UpdateBranchAction" name="BranchBeanForm"
+      validate="false"
+      input="/UpdateBranch.jsp">
+      <forward name="success"  path="/updatehome.jsp"/>
+      <forward name="fail" path="/UpdateBranch.jsp"/>
+      </action>
+      
+      <action path="/gotoedit" 
+      type="com.nit.vehicle.EditBranchAction" name="BranchBeanForm"
+      validate="false"
+      input="/EditBranch.jsp">
+      <forward name="success" path="/UpdateBranch.jsp"/>
+      <forward name="fail" path="/EditBranchFail.jsp"/>
+      </action>
+      <action path="/gotows" type="com.nit.vehicle.WorkShopAction" />
+      
+      <action path="/gotologinpage" 
+      name="LoginPageForm" scope="request"
+      input="/FirstPage.jsp" validate="true"
+      type="com.nit.vehicle.LoginPageAction">
+      
+      <forward  name="notValid" path="/invaliduser.jsp"/>
+      <forward  name="admin1" path="/adminhomepage.jsp"/>
+      <forward  name="police1" path="/policeloginsuccess.jsp"/>
+      <forward  name="insurance1" path="/Insuranceloginsuccess.jsp"/>
+      <forward  name="workshop1" path="/workshoploginsuccess.jsp"/>
+      <forward  name="staff1" path="/adminStaff.jsp"/>
+      <forward  name="customer1" path="/customerloginsuccess.jsp"/>
+      </action>
+      <action path="/gotopolice" 
+      name="PoliceForm"
+      validate="false"
+      input="/loginpolice.jsp"
+      type="com.nit.vehicle.PoliceAction"  scope="request">
+     <forward name="success"  path="/policeloginsuccess.jsp"/>
+     <forward name="fail" path="/policeloginfail.jsp"/>
+     </action> 
+     
+      <action path="/gotopsuccess" 
+       type="com.nit.vehicle.ViewVehicleDetailsAction" 
+      name="ViewVehicleForm"
+      input="/SearchDetails.jsp"
+      validate="false"  scope="request"> 
+      <forward name="success" path="/PSearchSuccess.jsp"/>
+      <forward name="fail" path="/PSearchFail.jsp"/>
+      </action>
+     
+      <action path="/gotoppsuccess" 
+       type="com.nit.vehicle.ViewVehicleDetailsAction" 
+      name="ViewVehicleForm"
+      input="/SearchDetails.jsp"
+      validate="false"  scope="request"> 
+      <forward name="success" path="/Policecrime.jsp"/>
+      <forward name="fail" path="/Policefail.jsp"/>
+      </action>
+      
+    <action path="/gotonewuser"
+      type="com.nit.vehicle.NewUserAction" 
+      name="NewUserForm" validate="false"
+      input="/newuserregistration.jsp"
+       scope="request">
+       <forward name="success"  path="/newuserregistrationsuccess.jsp"/>
+       <forward name="fail" path="/newuserregistrationfail.jsp"/>
+       </action>
+       
+      <action path="/gotoinsurance" 
+      name="InsuranceLoginForm" 
+      validate="false"
+      input="/Insurancelogin.jsp" scope="request"
+      type="com.nit.vehicle.InsuranceLoginAction">
+      <forward name="success" path="/Insuranceloginsuccess.jsp"/>
+      <forward name="fail" path="/Insuranceloginfail.jsp"/>
+      </action>
+      
+      <action  path="/gotoworkshoplogin" 
+      name="WorkshopLoginForm"
+      input="/workshoplogin.jsp"
+      validate="false" scope="request"
+      type="com.nit.vehicle.WorkshopLoginAction">
+      <forward name="success" path="/workshoploginsuccess.jsp"/>
+      <forward name="fail" path="/workshoploginfail.jsp"/>
+       </action>
+      <action path="/gotoother" 
+      name="OtherUserRegistrationForm"
+      validate="false" input="/Otheruser.jsp"
+      scope="request"  type="com.nit.vehicle.OtherUserRegistrationAction">
+      <forward name="success" path="/newuserregistrationsuccess.jsp"/>
+      <forward name="fail"  path="/newuserregistrationfail.jsp"/>
+      </action>
+      <action   path="/gotoaddvehicle" 
+      name="AddVehicleDetailsForm"
+        type="com.nit.vehicle.AddVehicleDetailsAction" 
+        input="AddVehicle.jsp" scope="request">
+        <forward name="success" path="/policeloginsuccess.jsp"/>
+        <forward name="fail" path="/policeloginfail.jsp"/>
+        </action>
+      <action path="/gotoblock" 
+      name="LoginPageForm"
+      validate="false"
+      input="/blockuser.jsp" scope="request"
+      type="com.nit.vehicle.BlockUserAction">
+      <forward name="success" path="/blocksuccess.jsp"/>
+      <forward name="fail" path="/blockfail.jsp"/>
+      </action>
+      <action path="/regdetails"
+      name="VehicleRegistrationForm" 
+      type="com.nit.vehicle.VehicleRegistrationAction"
+      scope="request"  input="/vehiclereg.jsp"
+      validate="false">
+      <forward name="success" path="/regsuccess.jsp"/>
+      <forward name="fail" path="/regfail.jsp"/>
+      </action>
+      <action  path="/techdetails" 
+      name="VehicleTechnicalForm"
+      input="/vehtech.jsp"
+      scope="request"
+      validate="false"
+      type="com.nit.vehicle.VehicleTechnicalAction" >
+      <forward name="success" path="/regsuccess.jsp"/>
+      </action>
+      <action path="/viewvehdetails" 
+      name="VehicleRegistrationForm"
+      input="/viewws.jsp"
+      scope="session"
+      validate="false"
+      type="com.nit.vehicle.ViewVehicleAction">
+      <forward name="success" path="/viewsuccess.jsp"/>
+      </action>
+      <action path="/viewvehiclesuc" 
+      name="VehicleRegistrationForm"
+      input="/viewws.jsp"
+      scope="session"
+      validate="false"
+      type="com.nit.vehicle.ViewVehicleAction">
+      <forward name="success" path="/ViewWorkshopSuccess.jsp"/>
+      </action>
+      
+      <action path="/viewvehdetailsi" 
+      name="VehicleRegistrationForm"
+      input="/viewwsi.jsp"
+      scope="session"
+      validate="false"
+      type="com.nit.vehicle.ViewVehicleAction">
+      <forward name="success" path="/viewsuccessi.jsp"/>
+      <forward name="fail" path="/viewsuccessifail.jsp"/>
+      </action>
+       <action path="/viewvehdetailsadmin" 
+      name="VehicleRegistrationForm"
+      input="/viewwsadmin.jsp"
+      scope="session"
+      validate="false"
+      type="com.nit.vehicle.ViewVehicleAction">
+      <forward name="success" path="/viewsuccessadmin.jsp"/>
+            <forward name="success" path="/viewsuccessadminfail.jsp"/>
+      </action>
+      
+       <action path="/viewvehdetailsstaff" 
+      name="VehicleRegistrationForm"
+      input="/viewvehiclestaff.jsp"
+      scope="session"
+      validate="false"
+      type="com.nit.vehicle.ViewVehicleAction">
+      <forward name="success" path="/viewsuccessstaff.jsp"/>
+      <forward name="fail" path="/viewsuccessstafffail.jsp"/>
+      </action>
+      <action path="/viewvehdetailswork" 
+      name="VehicleRegistrationForm"
+      input="/Workshopview.jsp"
+      scope="session"
+      validate="false"
+      type="com.nit.vehicle.DropVehicleAction">
+      <forward name="success" path="/Workshopview.jsp"/>
+      </action>
+      <action path="/gotonewmodel" 
+      name="NewModelForm"
+      input="/NewModel.jsp"
+      scope="request"
+      validate="false"
+      type="com.nit.vehicle.NewModelAction">
+      <forward name="success" path="/NewModelSuccess.jsp"/>
+      </action>
+      <action
+         input="/NewAdmin.jsp"
+         name="NewAdminForm"
+         path="/gotonewadmin"
+         scope="request"
+         type="com.nit.vehicle.NewAdminAction">
+         <forward name="success" path="/NewAdminSuccess.jsp" />
+      </action>
+      <action path="/acceptorreject" 
+      name="AcceptOrRejectForm"
+      scope="request"
+      validate="true"
+      input="/AcceptOrReject.jsp"
+      type="com.nit.vehicle.AcceptOrRejectAction">
+      <forward name="success" path="/Accepted.jsp"/>
+      </action>
+      <action path="/gotonb" 
+      name="MsgToNoticeBoardForm"
+      scope="request"
+      input="/MsgToNoticeBoard.jsp"
+      type="com.nit.vehicle.MsgToNoticeBoardAction">
+      <forward  name="success"  path="/MsgSend.jsp"/>
+      </action>
+      <action  
+      path="/viewnoticeboardmsg" 
+      name="MsgToNoticeBoardForm"
+      validate="false"
+      input="/ViewNoticeBoard.jsp"
+      type="com.nit.vehicle.ViewNoticeBoardMsgAction">
+      <forward name="success" path="/NbSuccess.jsp"/>
+      </action>
+      <action path="/gotounblock"
+      name="LoginPageForm"
+      scope="request"
+      input="/unblockuser.jsp"
+      validate="false"
+       type="com.nit.vehicle.UnblockUserAction">
+       <forward name="success" path="/unblocksuccess.jsp"/>
+       <forward name="fail" path="/unblockfail.jsp"/>
+       </action>
+      <action path="/gotopolicesendmsg" type="com.nit.vehicle.PoliceSendMsgAction" />
+      <action path="/gotopoliceview" 
+      name="AddvehicleDetailsForm"
+      scope="request"
+      input="/policeview.jsp"
+      validate="false"
+      type="com.nit.vehicle.PoliceViewAction">
+      <forward name="success" path="policeviewsuccess.jsp"/>
+      </action>
+      <action path="/gotoupdatevehicle" type="com.nit.vehicle.ChangeVehicleAction" />
+      <action
+         path="/view"
+         name="VehicleRegistrationForm"
+         scope="request"
+         validate="false"
+         input="/policeview.jsp"
+         type="com.nit.vehicle.DropVehicleAction">
+         <forward name="success" path="/policeview.jsp" />
+      </action>
+      <action
+         attribute="messagesForm"
+         input="Messages.jsp"
+         name="messagesForm"
+         path="/messages"
+         scope="request"
+         type="com.nit.vehicle.MessagesAction">
+         <forward name="success" path="/success.jsp" />
+         
+         </action>
+         <action
+         attribute="messagesForm"
+         input="Messages.jsp"
+         name="messagesForm"
+         path="/messagesadmin"
+         scope="request"
+         type="com.nit.vehicle.MessagesAction">
+         <forward name="success" path="/amsuccess.jsp" />
+        </action>
+        
+         <action
+         attribute="messagesForm"
+         input="Messages.jsp"
+         name="messagesForm"
+         path="/messagesstaff"
+         scope="request"
+         type="com.nit.vehicle.MessagesAction">
+         <forward name="success" path="/afmsuccess.jsp" />
+        </action>
+        
+        <action
+         attribute="messagesForm"
+         input="Messages.jsp"
+         name="messagesForm"
+         path="/messageswork"
+         scope="request"
+         type="com.nit.vehicle.MessagesAction">
+         <forward name="success" path="/wmsuccess.jsp" />
+        </action>
+        
+        <action
+         attribute="messagesForm"
+         input="Messages.jsp"
+         name="messagesForm"
+         path="/messagesinsurance"
+         scope="request"
+         type="com.nit.vehicle.MessagesAction">
+         <forward name="success" path="/imsuccess.jsp" />
+        </action>
+        
+         <action
+         attribute="messagesForm"
+         input="Messages.jsp"
+         name="messagesForm"
+         path="/messagespolice"
+         scope="request"
+         type="com.nit.vehicle.MessagesAction">
+         <forward name="success" path="/pmsuccess.jsp" />
+        </action>
+      <action
+         attribute="viewmessageForm"
+         input="/Viewmessage.jsp"
+         name="viewmessageForm"
+         path="/viewmessage"
+         scope="request"
+         type="com.nit.vehicle.ViewmessageAction">
+         <forward name="success" path="/CustomerMsgView.jsp" />
+      </action>
+      
+      <action
+         attribute="viewmessageForm"
+         input="/Viewmessage.jsp"
+         name="viewmessageForm"
+         path="/viewmessagep"
+         scope="request"
+         type="com.nit.vehicle.ViewmessageAction">
+         <forward name="success" path="/PoliceViewMsgs.jsp" />
+      </action>
+      <action
+         attribute="viewmessageForm"
+         input="/Viewmessage.jsp"
+         name="viewmessageForm"
+         path="/viewmessagew"
+         scope="request"
+         type="com.nit.vehicle.ViewmessageAction">
+         <forward name="success" path="/WorkshopViewMsgs.jsp" />
+      </action>
+      <action
+         attribute="viewmessageForm"
+         input="/Viewmessage.jsp"
+         name="viewmessageForm"
+         path="/viewmessagesta"
+         scope="request"
+         type="com.nit.vehicle.ViewmessageAction">
+         <forward name="success" path="/StaffViewMsgs.jsp" />
+      </action>
+       <action
+         attribute="viewmessageForm"
+         input="/Viewmessage.jsp"
+         name="viewmessageForm"
+         path="/viewmessageadmin"
+         scope="request"
+         type="com.nit.vehicle.ViewmessageAction">
+         <forward name="success" path="/AdminViewMsgs.jsp" />
+      </action>
+       <action
+         attribute="viewmessageForm"
+         input="/Viewmessage.jsp"
+         name="viewmessageForm"
+         path="/viewmessagec"
+         scope="request"
+         type="com.nit.vehicle.ViewmessageAction">
+         <forward name="success" path="/CustomerViewMsgs.jsp" />
+      </action>
+      <action  path="/deletemsgs" 
+      name="messagesForm"
+      input="/viewmessage.jsp"
+      scope="request"
+      validate="false"
+       type="com.nit.vehicle.DeleteMsgAction">
+       <forward name="success" path="/deletemsgsuccess.jsp"/>
+       </action>
+      <action path="/changepassword"  
+      name="LoginPageForm" 
+      input="/changepassword.jsp"
+      validate="false"
+      scope="session"
+      type="com.nit.vehicle.ChangePasswordAction">
+      <forward name="success" path="/updatepassword.jsp"/>
+      <forward name="fail" path="/invalidpassword.jsp"/>
+      </action>
+      <action path="/updatepassword"
+      name="LoginPageForm" 
+      input="/updatepassword.jsp"
+      validate="false"
+      scope="session"
+      type="com.nit.vehicle.UpdatePasswordAction">
+      <forward name="success"  path="/updatepasswordsuccess.jsp"/>
+      </action>
+      <action
+         attribute="viewmodelForm"
+         input="/Viewmodel.jsp"
+         name="viewmodelForm"
+         path="/viewmodel"
+         scope="request"
+         type="com.nit.vehicle.ViewmodelAction">
+         <forward name="success" path="/Viewmodel.jsp" />
+      </action>
+      <action
+         attribute="viewmodelForm"
+         input="/viewmodelc.jsp"
+         name="viewmodelForm"
+         path="/viewmodelc"
+         scope="request"
+         type="com.nit.vehicle.ViewmodelAction">
+         <forward name="success" path="/viewmodelc.jsp" />
+      </action>
+      <action
+         attribute="viewmodelsuccessForm"
+         input="/Viewmodelsuccessc.jsp"
+         name="viewmodelsuccessForm"
+         path="/viewmodelsuccessc"
+         scope="request"
+         type="com.nit.vehicle.ViewmodelsuccessAction">
+         <forward name="success" path="/Viewmodelsuccessc.jsp" />
+      </action>
+      <action
+         attribute="viewmodelsuccessForm"
+         input="/Viewmodelsuccess.jsp"
+         name="viewmodelsuccessForm"
+         path="/viewmodelsuccess"
+         scope="request"
+         type="com.nit.vehicle.ViewmodelsuccessAction">
+         <forward name="success" path="/Viewmodelsuccess.jsp" />
+      </action>
+      <action path="/gotoinsuranceform" 
+      name="AddInsuranceForm"
+      validate="true"
+      input="/AddInsurance.jsp"
+      scope="request"
+      type="com.nit.vehicle.AddInsuranceAction">
+      <forward name="success" path="/AddInsurancesuccess.jsp"/>
+      </action>
+      <action path="/viewinsurance" 
+       name="AddInsuranceForm"
+       validate="false"
+      type="com.nit.vehicle.ViewInsuranceAction">
+      <forward name="success" path="/InsuranceViewSuccess.jsp"/>
+      <forward name="fail" path="/InsuranceViewSuccessfail.jsp"/>
+      </action>
+      <action path="/gotoservicedetails" 
+      name="AddServiceDetailsForm"
+      scope="request"
+      validate="false"
+     input="/AddService.jsp"
+      type="com.nit.vehicle.AddServiceDetailsAction">
+      <forward name="success" path="/AddServiceSuccess.jsp"/>
+      <forward name="fail" path="/AddServiceFail.jsp"/>
+      </action>
+      <action  path="/gotoviewservices" 
+      name="AddServiceDetailsForm"
+       scope="request"
+       validate="false"
+       input="/viewserviceadminstaff.jsp"
+      type="com.nit.vehicle.ServiceViewAction">
+      <forward name="success" path="/viewservicestaffsuccess.jsp"/>
+      <forward name="fail" path="/viewservicestafffail.jsp"/>
+      </action>
+      <action  path="/gotoviewservice" 
+      name="AddServiceDetailsForm"
+      scope="request"
+      input="/ViewService.jsp"
+      validate="false"
+      type="com.nit.vehicle.ServiceViewAction">
+      <forward name="success" path="/ViewServiceSuccess.jsp"/>
+      <forward name="fail" path="/ViewServicefail.jsp"/>
+      </action>
+      <action  path="/updateservice" 
+      name="AddServiceDetailsForm"
+       scope="request"
+       input="/ViewServiceSuccess.jsp"
+      type="com.nit.vehicle.UpdateServiceAction">
+      <forward name="success" path="/updateServicesuccess.jsp"/>
+      </action>
+      
+       <action  path="/gotoviewvehicleupdate" 
+      name="VehicleRegistrationForm"
+      input="/viewsuccess.jsp"
+      validate="false"
+      type="com.nit.vehicle.UpdateViewVehicleAction">
+      <forward name="success" path="/vehicleupdatesuccess.jsp"/>
+      </action>
+    <action   path="/changeprofile" 
+      name="AcceptOrRejectForm"
+      validate="false"
+      scope="session"
+      type="com.nit.vehicle.ChangeProfileAction">
+   <forward name="success" path="/ChangeProfileView.jsp"/>
+   <forward name="fail" path="/ProfileViewfail.jsp"/>
+   </action>
+     <action path="/updateprofile" 
+     name="AcceptOrRejectForm"
+     input="/ChangeProfileView.jsp"
+     validate="false"
+     type="com.nit.vehicle.UpdateProfileAction">
+    <forward name="success" path="/UpdateProfileSuccess.jsp"/>
+   
+     </action>
+      <action path="/newservice" 
+      name="AddServiceDetailsForm"
+      input="/NewServices.jsp"
+      validate="true"
+      scope="request"
+      type="com.nit.vehicle.NewServiceAction">
+      <forward  name="success" path="/newservicesuccess.jsp"/>
+      </action>
+      <action path="/viewnbmsgs" type="com.nit.vehicle.ViewNBMsgsAction" />
+    
+      <action path="/viewnb" 
+        attribute="viewmessageForm"
+         input="/Viewmessage.jsp"
+         name="viewmessageForm"
+         scope="request"
+        type="com.nit.vehicle.ViewVBAction">
+        <forward name="success" path="/AdminViewMsgs123.jsp"/>
+        </action>
+   </action-mappings>
+<message-resources parameter="com.nit.vehicle.ApplicationResources"/>
+</struts-config>
+
