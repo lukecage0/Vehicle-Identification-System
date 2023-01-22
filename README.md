@@ -14,11 +14,10 @@ Administrative module
 
 By this administrator of the Vehicle Identification System can give access to any person or organization by providing them with some user Id. This will have access to deny for providing the information to anyone.
 
-User module
-
-Through this module anyone can access the details of any vehicle by entering the user Id into the system, while this module contains several other modules according to the use. These modules are
+User module: Through this module anyone can access the details of any vehicle by entering the user Id into the system, while this module contains several other modules according to the use. These modules are
 
 Workshop module: It will contain registration details with other service information about the vehicle.
 Customer module: this module will provide information to the owner about the vehicle condition and other queries.
+
 Insurance module: This will add the information of the vehicle into the system and will track the details.
 Police module: The module will help police to check all the valid information on the vehicle.
